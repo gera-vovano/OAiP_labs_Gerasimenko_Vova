@@ -1,0 +1,5 @@
+﻿  Lab1-5.cpp
+c:\users\geras\desktop\аип\lab1-5\lab1-5\lab1-5.cpp(24): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+c:\users\geras\desktop\аип\lab1-5\lab1-5\lab1-5.cpp(25): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  Lab1-5.vcxproj -> C:\Users\geras\Desktop\АИП\Lab1-5\Debug\Lab1-5.exe
+  Lab1-5.vcxproj -> C:\Users\geras\Desktop\АИП\Lab1-5\Debug\Lab1-5.pdb (Partial PDB)
