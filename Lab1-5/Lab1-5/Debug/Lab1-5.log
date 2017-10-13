@@ -1,5 +1,0 @@
-﻿  Lab1-5.cpp
-c:\users\geras\source\repos\lab1-5\lab1-5\lab1-5.cpp(19): warning C4477: "scanf": в строке форматирования "%f" требуется аргумент типа "float *", но вариативный аргумент "1" имеет тип "double *"
-  c:\users\geras\source\repos\lab1-5\lab1-5\lab1-5.cpp(19): note: рекомендуется использовать "%lf" в строке форматирования
-  Lab1-5.vcxproj -> C:\Users\geras\source\repos\Lab1-5\Debug\Lab1-5.exe
-  Lab1-5.vcxproj -> C:\Users\geras\source\repos\Lab1-5\Debug\Lab1-5.pdb (Partial PDB)
