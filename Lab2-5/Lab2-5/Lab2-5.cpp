@@ -1,64 +1,73 @@
-/*
-Герасименко Владимир Александрович
-Лабораторная работа №2.
-Вариант №5
-Задание: Написать программу, которая вычисляет произведение всех отрицательных элементов массива.
-Массив и его длина вводятся пользователем.
+п»ї/*
+Р“РµСЂР°СЃРёРјРµРЅРєРѕ Р’Р»Р°РґРёРјРёСЂ РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡
+Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–2.
+Р’Р°СЂРёР°РЅС‚ в„–5
+Р—Р°РґР°РЅРёРµ: РќР°РїРёСЃР°С‚СЊ РїСЂРѕРіСЂР°РјРјСѓ, РєРѕС‚РѕСЂР°СЏ РІС‹С‡РёСЃР»СЏРµС‚ РїСЂРѕРёР·РІРµРґРµРЅРёРµ РІСЃРµС… РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°.
+РњР°СЃСЃРёРІ Рё РµРіРѕ РґР»РёРЅР° РІРІРѕРґСЏС‚СЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
 */
-	#define _CRT_SECURE_NO_WARNINGS
-	#include <stdio.h>
-	#include <locale.h>
-	#include <conio.h>
-	#define SIZE 100
-	int CheckArray(int size);
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <locale.h>
+#include <conio.h>
+#define SIZE 100
+int CheckArray(int size);
+int CheckMass(int size);
+
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	int  size = 0;
-	printf("Введите размерность массива не более чем %d", SIZE);
+	printf("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ РјР°СЃСЃРёРІР° РЅРµ Р±РѕР»РµРµ С‡РµРј %d", SIZE);
 	printf("\n");
 	scanf("%d", &size);
 	CheckArray(size);
 }
+int CheckMass(int size)
+{
+	int result, i;
+	float A;
+
+	result = 0;
+	while (result == 0)
+	{
+		printf("Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° ");
+		result = scanf("%f", &A);
+		while (getchar() != '\n')
+			if (result == 0)
+			{
+				printf("Р’РІРµРґРёС‚Рµ РІС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ РІ РІРёРґРµ С‡РёСЃР»Р°! ");
+				break;
+			}
+	}
+	return (A);
+}
 int CheckArray(int size)
 {
 	int i = 0, result = 0;
-	float  multiplication = 1, Array[100] = { 0 };
+	float  multiplication = 1, Array[100];
 	if (size <= SIZE)
 	{
+
 		for (i = 0; i < size; i++)
 		{
-			result = 0;
-			while (result == 0)
+			Array[i] = CheckMass(size);
+			if (Array[i] < 0)
 			{
-				printf("Введите элемент массива A[%d] = ", i);
-				result = scanf("%f", &Array[i]);
-				while (getchar() != '\n')
-					if (result == 0)
-					{
-						printf("Введите входные данные в виде числа! ");
-						break;
-					}
-
-				if (Array[i] < 0)
-				{
-					multiplication *= Array[i];
-				}
+				multiplication *= Array[i];
 			}
 		}
-		if (multiplication == 1)
-		{
-			printf("решения нет");
-		}
-		else
-		{
-			printf("Ответ = %.2f ", multiplication);
-		}
+
+	}
+
+	if (multiplication == 1)
+	{
+		printf("СЂРµС€РµРЅРёСЏ РЅРµС‚");
 	}
 	else
 	{
-		printf("Превышена размерность массива!");
+		printf("РћС‚РІРµС‚ = %.2f ", multiplication);
 	}
 	_getch();
 	return 0;
 }
+
