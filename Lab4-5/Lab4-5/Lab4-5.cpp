@@ -1,8 +1,8 @@
-/*
-Герасименко Владимир Александрович
-Лабораторная работа №2.
-Вариант №5
-Задание:Написать программу, которая во вводимом с клавиатуры тексте заменит буквы «ь» на «ъ» и выведет результат на экран. .
+п»ї/*
+Р“РµСЂР°СЃРёРјРµРЅРєРѕ Р’Р»Р°РґРёРјРёСЂ РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡
+Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–2.
+Р’Р°СЂРёР°РЅС‚ в„–5
+Р—Р°РґР°РЅРёРµ:РќР°РїРёСЃР°С‚СЊ РїСЂРѕРіСЂР°РјРјСѓ, РєРѕС‚РѕСЂР°СЏ РІРѕ РІРІРѕРґРёРјРѕРј СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ С‚РµРєСЃС‚Рµ Р·Р°РјРµРЅРёС‚ Р±СѓРєРІС‹ В«СЊВ» РЅР° В«СЉВ» Рё РІС‹РІРµРґРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РЅР° СЌРєСЂР°РЅ. .
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <conio.h>
@@ -17,47 +17,43 @@
 int main()
 {	FILE *F1, *F2;
 	F1 = fopen("C:/github/OAiP_labs_Gerasimenko_Vova/Lab4-5/F1.txt", "r");
-		int length, i, check = 0;
-		char symbol[SIZE];
-		system("chcp 1251");
-		system("cls");
+	int length, i, check = 0,control;
+	char symbol[SIZE];
+	system("chcp 1251");
+	system("cls");
+	control = getc(F1);
+	while (control != EOF)
+	{
 		fgets(symbol, SIZE, F1);
 		length = strlen(symbol);
-		if (symbol == 0)
+		for (i = 0; i < length; i++)
 		{
-			printf(" файл с входными данными пустой! ");
-			return 0;
+			switch (symbol[i])
+			{
+			case 'СЊ': symbol[i] = 'СЉ';
+				break;
+			case 'Р¬': symbol[i] = 'РЄ';
+				break;
+			case 'СЉ': symbol[i] = 'СЊ';
+				break;
+			case 'РЄ': symbol[i] = 'Р¬';
+				break;
+			default: check++;
+				break;
+			}
 		}
-		else
-		{
-			for (i = 0; i < length; i++)
-			{
-				switch (symbol[i])
-				{
-				case 'ь': symbol[i] = 'ъ';
-					break;
-				case 'Ь': symbol[i] = 'Ъ';
-					break;
-				case 'ъ': symbol[i] = 'ь';
-					break;
-				case 'Ъ': symbol[i] = 'Ь';
-					break;
-				default: check++;
-					break;
-				}
-			}
-			F2 = fopen("C:/github/OAiP_labs_Gerasimenko_Vova/Lab4-5/F2.txt", "w");
-			if ((check == length)||(length==0))
-			{
-				fprintf(F2,"решения нет");
-				fclose(F2);
-			}
-			else
-			{
-				fprintf(F2,"ответ: ");
-				fputs(symbol,F2);
-				fclose(F2);
-			}
+	}
+	F2 = fopen("C:/github/OAiP_labs_Gerasimenko_Vova/Lab4-5/F2.txt", "w");
+	if ((check == length)||(length==0))
+	{
+		fprintf(F2,"СЂРµС€РµРЅРёСЏ РЅРµС‚");
+		fclose(F2);
+	}
+	else
+	{
+		fprintf(F2,"РѕС‚РІРµС‚: ");
+		fputs(symbol,F2);
+		fclose(F2);
 	}
 	system("pause");
 	return 0;
