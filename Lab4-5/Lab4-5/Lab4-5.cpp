@@ -11,23 +11,26 @@
 #include <locale> 
 #include <conio.h> 
 
-void Error(FILE *File1, FILE *File2);
+void checkError(FILE *File1, FILE *File2);
 void treatment(FILE *File1, FILE *File2);
+int *flag;
 
 void main() {
 	system("chcp 1251");
 	system("cls");
-	FILE *File1,
+	FILE 
+		*File1,
 		*File2;
 	File1 = fopen("File1.txt", "r");
 	File2 = fopen("File2.txt", "w");
-	Error(File1, File2);
+	checkError(File1, File2);
+	treatment(File1, File2);
 	fclose(File1);
 	fclose(File2);
 }
 
 
-void Error(FILE *File1, FILE *File2)
+void checkError(FILE *File1, FILE *File2)
 {
 	if (File1 == NULL)
 	{
@@ -35,35 +38,26 @@ void Error(FILE *File1, FILE *File2)
 		_getch();
 		exit(0);
 	}
-	else
-		treatment(File1, File2);
+		
 }
 
 void treatment(FILE *File1, FILE *File2)
 {
 	int check = 0, length;
 	char symbol[SIZE];
-	length = strlen(symbol);
 	while (fgets(symbol, sizeof(symbol), File1) != NULL)
 		for (int i = 0; symbol[i]; i++)
 		{
 			switch (symbol[i])
 			{
-			case 'ь': symbol[i] = 'ъ';
-				break;
-			case 'Ь': symbol[i] = 'Ъ';
-				break;
-			case 'ъ': symbol[i] = 'ь';
-				break;
-			case 'Ъ': symbol[i] = 'Ь';
-				break;
-			default: check++;
-				break;
-			}
+				case 'ь': 
+					symbol[i] = 'ъ';
+					break;
+				case 'Ь': 
+					symbol[i] = 'Ъ';
+					break;
+				}
 			fprintf(File2, "%c", symbol[i]);
 		}
-	if (check == length)
-	{
-		fprintf(File2, " Заменённых символов нет! ");
-	}
+	
 }
