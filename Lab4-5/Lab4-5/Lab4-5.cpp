@@ -13,12 +13,20 @@
 
 void checkError(FILE *File1, FILE *File2);
 void treatment(FILE *File1, FILE *File2);
+void openFile(void);
+void replacement(int i, char *symbol);
 int *flag;
 
-void main() {
+void main() 
+{
 	system("chcp 1251");
 	system("cls");
-	FILE 
+	openFile();
+}
+
+void openFile(void)
+{
+	FILE
 		*File1,
 		*File2;
 	File1 = fopen("File1.txt", "r");
@@ -28,7 +36,6 @@ void main() {
 	fclose(File1);
 	fclose(File2);
 }
-
 
 void checkError(FILE *File1, FILE *File2)
 {
@@ -48,16 +55,21 @@ void treatment(FILE *File1, FILE *File2)
 	while (fgets(symbol, sizeof(symbol), File1) != NULL)
 		for (int i = 0; symbol[i]; i++)
 		{
-			switch (symbol[i])
-			{
-				case 'ь': 
-					symbol[i] = 'ъ';
-					break;
-				case 'Ь': 
-					symbol[i] = 'Ъ';
-					break;
-				}
+			replacement(i,symbol);
 			fprintf(File2, "%c", symbol[i]);
 		}
 	
+}
+
+void replacement(int i,char *symbol)
+{
+	switch (symbol[i])
+	{
+	case 'ь':
+		symbol[i] = 'ъ';
+		break;
+	case 'Ь':
+		symbol[i] = 'Ъ';
+		break;
+	}
 }
