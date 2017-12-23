@@ -1,35 +1,49 @@
-/*
-Герасименко Владимир Александрович
-Лабораторная работа №1.
-Вариант №5
-Задание: Перевести лот в карат и выразить в унциях.
+п»ї/*
+Р“РµСЂР°СЃРёРјРµРЅРєРѕ Р’Р»Р°РґРёРјРёСЂ РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡
+Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–1.
+Р’Р°СЂРёР°РЅС‚ в„–5
+Р—Р°РґР°РЅРёРµ: РџРµСЂРµРІРµСЃС‚Рё Р»РѕС‚ РІ РєР°СЂР°С‚ Рё РІС‹СЂР°Р·РёС‚СЊ РІ СѓРЅС†РёСЏС….
 */
+
 #define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <locale.h>
 #include <conio.h>
+
 #define CARAT 63.98626
 #define OUNCE 0.451410
 
-int main() {
-	setlocale(LC_ALL, "Rus");
-	float lot, otv_inCarat, otv_inOunce;
-	printf("введите число в лотах \n");
+void working();
+void calculations(int result, int lot);
 
+int main() 
+{
+	setlocale(LC_ALL, "Rus");
+	working();
+	_getch();
+	return 0;
+}
+
+void working()
+{
+	float lot;
+	printf("РІРІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РІ Р»РѕС‚Р°С… \n");
 	int result = scanf("%f", &lot);
-	if ((lot >= 0) && (result == 1)&& (lot<_CRT_INT_MAX))
-	//scanf("%f", &lot);
-	//if ((lot>=0)&&(lot<_CRT_INT_MAX))
+	calculations(result, lot);
+
+}
+
+void calculations(int result, int lot)
+{
+	float otvInCarat, otvInOunce;
+	if ((lot >= 0) && (result == 1) && (lot<_CRT_INT_MAX))
 	{
-		otv_inCarat = lot*CARAT;
-		otv_inOunce = lot * OUNCE;
-		printf("ответ в каратах = %f \n", otv_inCarat);
-		printf("ответ в унциях = %f \n", otv_inOunce);
+		printf("РѕС‚РІРµС‚ РІ РєР°СЂР°С‚Р°С… = %f \n", lot*CARAT);
+		printf("РѕС‚РІРµС‚ РІ СѓРЅС†РёСЏС… = %f \n", lot * OUNCE);
 	}
 	else
 	{
-		printf("нет решения или неверный формат вводимых данных \n");
+		printf("РЅРµС‚ СЂРµС€РµРЅРёСЏ РёР»Рё РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґРёРјС‹С… РґР°РЅРЅС‹С… \n");
 	}
-	_getch();
-	return 0;
 }
