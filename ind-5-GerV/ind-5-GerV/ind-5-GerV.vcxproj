@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{8440DB1D-D031-4DBA-B3D4-D4F30A24C6EB}</ProjectGuid>
-    <RootNamespace>indiv</RootNamespace>
+    <ProjectGuid>{F0CF47DE-B373-4686-AEAD-790E832E2E6B}</ProjectGuid>
+    <RootNamespace>ind5GerV</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -111,7 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="indiv.cpp" />
+    <ClCompile Include="ind-5-GerV.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
